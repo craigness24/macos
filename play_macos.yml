@@ -1,0 +1,22 @@
+---
+- name: Setup macOS
+  hosts: localhost
+  become: false
+
+  tasks:
+    - name: Include vars for host
+      include_vars:
+        file: 'vars/{{ ansible_hostname }}.yml'
+      tags:
+        - always
+
+    - name: Include brew tasks
+      import_tasks: tasks/brew.yml
+      tags:
+        - brew
+
+    - name: Include dotfile tasks
+      import_tasks: tasks/dotfile.yml
+      tags:
+        - dotfile
+

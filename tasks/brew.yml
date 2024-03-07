@@ -1,0 +1,62 @@
+---
+- name: Combine packages
+  set_fact:
+    all_brews: "{{ homebrew.brews + homebrew.casks }}"
+
+- name: Gather existing brews
+  shell: brew leaves && brew ls --casks -1
+  changed_when: false
+  register: existing_brews
+
+- block:
+  - name: Print existing brews
+    debug:
+      var: existing_brews.stdout_lines
+  - name: Print configured brews
+    debug:
+      var: all_brews
+  when: homebrew.debug
+
+- block:
+  - name: Upgrading Homebrew Packages
+    homebrew:
+      upgrade_all: "{{ homebrew.upgrade }}"
+      update_homebrew: true
+    register: result
+    until: result is successful
+
+  - name: Upgraded packages
+    debug:
+      var: result
+  when: homebrew.upgrade
+
+- name: Uncork Taps
+  homebrew_tap:
+    name: "{{ homebrew.taps }}"
+
+- block:
+  - name: Installing Homebrew Packages
+    homebrew:
+      name: "{{ all_brews | difference(existing_brews.stdout_lines) }}"
+      state: present
+    register: result
+    until: result is successful
+
+  - name: Installed Brews
+    debug:
+      var: result
+  when: true
+
+- block:
+  - name: Autoremove
+    homebrew:
+      name: "{{ existing_brews.stdout_lines | difference(all_brews) }}"
+      state: absent
+    register: autoremoved_result
+  - name: Autoremoved Packages
+    debug:
+      var: autoremoved_result
+  when: homebrew.autoremove
+
+
+
