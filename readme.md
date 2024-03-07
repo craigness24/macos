@@ -1,8 +1,8 @@
 ## Initial Setup
 On a fresh macos installation: 
 * install [homebew](https://brew.sh)
-* brew install ansible
-* create a vars/hostname.yml
+* `brew install ansible`
+* create a `vars/hostname.yml`
 
 ## Run playbook
 ```shell
@@ -22,7 +22,8 @@ ansible-playbook play_macos.yml -t dotfile
 
 
 ## TODO 
-[x] Always maintain brew installed packages the same as the brew vars list - even when removed
-  * compare `brew leaves` and `brew ls --casks -1` against brew vars
+[x] Always maintain brew installed packages the same as the brew vars list - even when removed. compare `brew leaves` and `brew ls --casks -1` against brew vars
+
 [] Auto remove taps when removed from config
+
 [] Cleanup dotfile symlinks when removed from vars
