@@ -1,3 +1,5 @@
 [fetch]
   prune = true
 
+[core]
+	autocrlf = input

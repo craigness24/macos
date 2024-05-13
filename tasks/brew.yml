@@ -21,6 +21,7 @@
   - name: Upgrading Homebrew Packages
     homebrew:
       upgrade_all: "{{ homebrew.upgrade }}"
+      upgrade_options: greedy
       update_homebrew: true
     register: result
     until: result is successful
@@ -28,6 +29,7 @@
   - name: Upgraded packages
     debug:
       var: result
+    when: result.changed
   when: homebrew.upgrade
 
 - name: Uncork Taps
@@ -44,7 +46,8 @@
 
   - name: Installed Brews
     debug:
-      var: result
+      var: result.msg
+    when: result.changed
   when: true
 
 - block:
@@ -55,7 +58,8 @@
     register: autoremoved_result
   - name: Autoremoved Packages
     debug:
-      var: autoremoved_result
+      var: autoremoved_result.msg
+    when: autoremoved_result.changed
   when: homebrew.autoremove
 
 

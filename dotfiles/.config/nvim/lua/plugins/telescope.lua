@@ -24,4 +24,7 @@ return {
       end,
     },
   },
+  {
+    "nvim-telescope/telescope-symbols.nvim",
+  },
 }

@@ -27,3 +27,11 @@ ansible-playbook play_macos.yml -t dotfile
 [] Auto remove taps when removed from config
 
 [] Cleanup dotfile symlinks when removed from vars
+
+
+## brew
+Original dump created with `brew bundle dump`. Initial sync will have to be run manually using brew bundle with the brew file - afterwards use the `just sync` command from the `Justfile`.
+```shell
+HOMEBREW_NO_AUTO_UPDATE=1 /opt/homebrew/bin/brew bundle dump
+HOMEBREW_NO_AUTO_UPDATE=1 /opt/homebrew/bin/brew bundle --file="$HOME/Brewfile" --cleanup --no-upgrade
+```

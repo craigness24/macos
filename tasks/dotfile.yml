@@ -4,11 +4,11 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
-  with_items: "{{ symlinks }}"
+  with_items: "{{ dotfile.symlinks }}"
 
 - name: Replace config items
   ansible.builtin.copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     force: true
-  with_items: "{{ replacements }}"
+  with_items: "{{ dotfile.replacements }}"

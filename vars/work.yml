@@ -50,16 +50,18 @@ homebrew:
     - amethyst
     - obsidian
 
-symlinks:
-  - { src: "{{ playbook_dir }}/dotfiles/.zshrc", dest: "$HOME/.zshrc" }
-  - { src: "{{ playbook_dir }}/dotfiles/.tmux.conf", dest: "$HOME/.tmux.conf" }
-  - { src: "{{ playbook_dir }}/dotfiles/.gitconfig", dest: "$HOME/.gitconfig" }
-  - { src: "{{ playbook_dir }}/dotfiles/.ideavimrc", dest: "$HOME/.ideavimrc" }
-  - { src: "{{ playbook_dir }}/dotfiles/.config/idea.vmoptions", dest: "$HOME/.config/idea.vmoptions" }
-  - { src: "{{ playbook_dir }}/dotfiles/.config/kitty", dest: "$HOME/.config/kitty" }
-  - { src: "{{ playbook_dir }}/dotfiles/.config/starship.toml", dest: "$HOME/.config/starship.toml" }
-  - { src: "{{ playbook_dir }}/dotfiles/.config/nvim", dest: "$HOME/.config/nvim" }
-replacements:
-  - { src: "{{ playbook_dir }}/dotfiles/.config/k9s/skins", dest: "$HOME/Library/Application Support/k9s" }
-  - { src: "{{ playbook_dir }}/dotfiles/.config/k9s/config.yaml", dest: "$HOME/Library/Application Support/k9s/config.yaml" }
+dotfile:
+  symlinks:
+    - { src: "{{ playbook_dir }}/dotfiles/.zshrc", dest: "$HOME/.zshrc" }
+    - { src: "{{ playbook_dir }}/dotfiles/.tmux.conf", dest: "$HOME/.tmux.conf" }
+    - { src: "{{ playbook_dir }}/dotfiles/.gitconfig", dest: "$HOME/.gitconfig" }
+    - { src: "{{ playbook_dir }}/dotfiles/.ideavimrc", dest: "$HOME/.ideavimrc" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/idea.vmoptions", dest: "$HOME/.config/idea.vmoptions" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/kitty", dest: "$HOME/.config/kitty" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/starship.toml", dest: "$HOME/.config/starship.toml" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/nvim", dest: "$HOME/.config/nvim" }
+  replacements:
+    - { src: "{{ playbook_dir }}/dotfiles/.config/k9s/skins", dest: "$HOME/Library/Application Support/k9s" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/k9s/config.yaml", dest: "$HOME/Library/Application Support/k9s/config.yaml" }
+    - { src: "{{ playbook_dir }}/dotfiles/.config/lazygit/config.yml", dest: "$HOME/Library/Application Support/lazygit/config.yml" }
   
