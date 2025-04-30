@@ -42,15 +42,15 @@ alias lg='lazygit'
 # not working - trying to bind ~ to Delete key
 # bindkey "^[[3~" delete-char
 
-# Allow test container support using colima
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
-export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
-export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
-
-# replace default config dir for lazygit
 export XDG_CONFIG_HOME="$HOME/.config"
 # replace default macos config dir for k9s
 export K9S_CONFIG_DIR="$XDG_CONFIG_HOME/k9s"
+
+# Allow test container support using colima
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
+export DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
+
 
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 if type brew &>/dev/null; then
