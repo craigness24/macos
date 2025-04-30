@@ -43,11 +43,11 @@ alias lg='lazygit'
 # bindkey "^[[3~" delete-char
 
 # Allow test container support using colima
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
-# This DOCKER_HOST must match the url in `docker context ls`
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 
-
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 if type brew &>/dev/null; then
   # some brew packages install completions into this directory
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
