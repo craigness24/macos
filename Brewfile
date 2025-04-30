@@ -1,6 +1,6 @@
 tap "homebrew/bundle"
 tap "nats-io/nats-tools"
-brew "ansible"
+brew "stow"
 brew "awscli"
 brew "bat"
 brew "just"
