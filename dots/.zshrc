@@ -43,8 +43,6 @@ alias lg='lazygit'
 # bindkey "^[[3~" delete-char
 
 export XDG_CONFIG_HOME="$HOME/.config"
-# replace default macos config dir for k9s
-export K9S_CONFIG_DIR="$XDG_CONFIG_HOME/k9s"
 
 # Allow test container support using colima
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
