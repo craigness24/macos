@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "nats-io/nats-tools"
 brew "stow"
 brew "awscli"
